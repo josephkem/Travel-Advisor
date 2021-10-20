@@ -11,10 +11,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Map = () => {
   const classes = useStyles();
+  console.log(process.env.REACT_APP_GOOGLE_MAP_API_KEY);
   return (
     <Box className={classes.mapContainer}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.GOOGLE_MAP_API_KEY }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={{ lat: 32.6074954, lng: 43.941492 }}
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
