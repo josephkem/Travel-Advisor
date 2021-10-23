@@ -3,14 +3,17 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Map from "./components/Map";
 import List from "./components/List";
+import { getPlacesData } from "./api/travelAdvisorAPI";
 
 function App() {
-  const [type, setType] = useState("restaurant");
+  const [type, setType] = useState("restaurants");
   const [isLoading, setIsLoading] = useState(false);
   const [places, setPlaces] = useState([]);
   const [childClicked, setChildClicked] = useState(null);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getPlacesData(type);
+  }, [type]);
   return (
     <div>
       <CssBaseline />

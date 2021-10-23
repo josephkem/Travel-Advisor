@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Map = () => {
   const classes = useStyles();
-  console.log(process.env.REACT_APP_GOOGLE_MAP_API_KEY);
   return (
     <Box className={classes.mapContainer}>
       <GoogleMapReact
