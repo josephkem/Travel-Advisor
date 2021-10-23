@@ -12,8 +12,13 @@ function App() {
   const [childClicked, setChildClicked] = useState(null);
 
   useEffect(() => {
-    getPlacesData(type);
-  }, [type]);
+    setIsLoading(true);
+    getPlacesData(type).then((data) => {
+      setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
+      setIsLoading(false);
+    });
+  }, [type, setPlaces]);
+
   return (
     <div>
       <CssBaseline />
