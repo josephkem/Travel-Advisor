@@ -52,7 +52,16 @@ const List = ({ type, setType, isLoading, childClicked, places }) => {
               <MenuItem value="attractions">Attractions</MenuItem>
             </Select>
           </FormControl>
-          <Grid container spacing={3} className={classes.list}></Grid>
+          <Grid container spacing={3} className={classes.list}>
+            {places &&
+              places.map((place, index) => {
+                return (
+                  <Grid item xs={12}>
+                    <PlaceDetails place={place} key={index} />
+                  </Grid>
+                );
+              })}
+          </Grid>
         </div>
       )}
     </div>
