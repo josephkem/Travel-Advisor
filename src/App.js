@@ -23,8 +23,8 @@ function App() {
     <div>
       <CssBaseline />
       <Header />
-      <Grid container style={{ width: "100%" }}>
-        <Grid xs={12} md={4}>
+      <Grid container style={{ width: "100%" }} spacing={0.5}>
+        <Grid xs={12} md={4} spa>
           <List
             type={type}
             setType={(type) => setType(type)}
