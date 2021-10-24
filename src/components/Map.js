@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Map = ({ places, coords }) => {
+const Map = ({ places, coords, setBounds, setCoords }) => {
   const classes = useStyles();
   return (
     <Box className={classes.mapContainer}>
@@ -20,6 +20,10 @@ const Map = ({ places, coords }) => {
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
         options={{ disableDefaultUI: true, zoomControl: true }}
+        onChange={(e) => {
+          setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
+          setCoords({ lat: e.center.lat, lng: e.center.lng });
+        }}
       >
         {places.length > 0 &&
           places.map((place, index) => (

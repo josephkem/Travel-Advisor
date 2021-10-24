@@ -11,6 +11,7 @@ function App() {
   const [places, setPlaces] = useState([]);
   const [childClicked, setChildClicked] = useState(null);
   const [coords, setCoords] = useState({});
+  const [bounds, setBounds] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -43,7 +44,12 @@ function App() {
           />
         </Grid>
         <Grid xs={12} md={8}>
-          <Map places={places} coords={coords} />
+          <Map
+            places={places}
+            coords={coords}
+            setBounds={(bounds) => setBounds(bounds)}
+            setCoords={(coords) => setCoords(coords)}
+          />
         </Grid>
       </Grid>
     </div>
