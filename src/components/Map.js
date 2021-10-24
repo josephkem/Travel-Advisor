@@ -1,12 +1,19 @@
 import React from "react";
-import { makeStyles, Box } from "@material-ui/core";
+import { makeStyles, Box, Typography, Paper } from "@material-ui/core";
 import GoogleMapReact from "google-map-react";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
+import globe from "../images/globe.jpg";
 
 const useStyles = makeStyles((theme) => ({
   mapContainer: {
     height: "85vh",
     width: "100%",
+  },
+  paper: {
+    width: 100,
+    display: "flex",
+    justifyContent: "center",
+    padding: 10,
   },
 }));
 
@@ -29,6 +36,12 @@ const Map = ({ places, coords, setBounds, setCoords }) => {
           places.map((place, index) => (
             <div lat={place.latitude} lng={place.longitude} key={index}>
               <LocationOnOutlinedIcon color="secondary" fontSize="medium" />
+              <Paper className={classes.paper}>
+                <Typography className={classes.typography}>
+                  {place.name}
+                </Typography>
+                <img src={place.photo ? place.photo.images.large.url : globe} />
+              </Paper>
             </div>
           ))}
       </GoogleMapReact>
