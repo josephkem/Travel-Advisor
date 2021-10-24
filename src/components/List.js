@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   list: {
-    height: "75hvh",
+    height: "75vh",
     overflow: "auto",
   },
 }));
