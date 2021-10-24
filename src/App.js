@@ -10,6 +10,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [places, setPlaces] = useState([]);
   const [childClicked, setChildClicked] = useState(null);
+  const [coords, setCoords] = useState({});
 
   useEffect(() => {
     setIsLoading(true);
@@ -18,6 +19,14 @@ function App() {
       setIsLoading(false);
     });
   }, [type, setPlaces]);
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCoords({ lat: latitude, lng: longitude });
+      }
+    );
+  }, []);
 
   return (
     <div>
@@ -34,7 +43,7 @@ function App() {
           />
         </Grid>
         <Grid xs={12} md={8}>
-          <Map places={places} />
+          <Map places={places} coords={coords} />
         </Grid>
       </Grid>
     </div>

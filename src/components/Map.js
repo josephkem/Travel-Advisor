@@ -10,13 +10,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Map = ({ places }) => {
+const Map = ({ places, coords }) => {
   const classes = useStyles();
   return (
     <Box className={classes.mapContainer}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
-        defaultCenter={{ lat: 32.6074954, lng: 43.941492 }}
+        defaultCenter={coords}
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
         options={{ disableDefaultUI: true, zoomControl: true }}
@@ -24,7 +24,7 @@ const Map = ({ places }) => {
         {places.length > 0 &&
           places.map((place, index) => (
             <div lat={place.latitude} lng={place.longitude} key={index}>
-              <LocationOnOutlinedIcon color="primary" fontSize="large" />
+              <LocationOnOutlinedIcon color="info" fontSize="large" />
             </div>
           ))}
       </GoogleMapReact>
