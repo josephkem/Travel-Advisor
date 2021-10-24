@@ -5,8 +5,10 @@ import {
   makeStyles,
   MenuItem,
   Select,
+  Grid,
 } from "@material-ui/core";
 import React from "react";
+import PlaceDetails from "./PlaceDetails";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -31,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const List = ({ type, setType, isLoading, childClicked, places }) => {
+  console.log(places);
   const classes = useStyles();
   return (
     <div className={classes.container}>

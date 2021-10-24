@@ -23,13 +23,14 @@ function App() {
     <div>
       <CssBaseline />
       <Header />
-      <Grid container style={{ width: "100%" }} spacing={0.5}>
+      <Grid container style={{ width: "100%", paddingTop: 10 }}>
         <Grid xs={12} md={4} spa>
           <List
             type={type}
             setType={(type) => setType(type)}
             childClicked={childClicked}
             isLoading={isLoading}
+            places={places}
           />
         </Grid>
         <Grid xs={12} md={8}>
