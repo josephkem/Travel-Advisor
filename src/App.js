@@ -14,12 +14,14 @@ function App() {
   const [bounds, setBounds] = useState(null);
 
   useEffect(() => {
-    setIsLoading(true);
-    getPlacesData(type).then((data) => {
-      setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
-      setIsLoading(false);
-    });
-  }, [type, setPlaces]);
+    if (bounds) {
+      setIsLoading(true);
+      getPlacesData(type, bounds.ne, bounds.sw).then((data) => {
+        setPlaces(data.filter((place) => place.name && place.num_reviews > 0));
+        setIsLoading(false);
+      });
+    }
+  }, [type, setPlaces, bounds]);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(

@@ -28,7 +28,7 @@ const Map = ({ places, coords, setBounds, setCoords }) => {
         {places.length > 0 &&
           places.map((place, index) => (
             <div lat={place.latitude} lng={place.longitude} key={index}>
-              <LocationOnOutlinedIcon color="info" fontSize="large" />
+              <LocationOnOutlinedIcon color="secondary" fontSize="medium" />
             </div>
           ))}
       </GoogleMapReact>
