@@ -9,6 +9,7 @@ import { Rating } from "@material-ui/lab";
 import React from "react";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import PhoneIcon from "@material-ui/icons/Phone";
+import globe from "../images/globe.jpg";
 
 const PlaceDetails = ({ place }) => {
   return (
@@ -16,7 +17,7 @@ const PlaceDetails = ({ place }) => {
       <Card elevation={8}>
         <CardMedia
           style={{ height: 350 }}
-          image={place.photo ? place.photo.images.large.url : null}
+          image={place.photo ? place.photo.images.large.url : globe}
           title={place.name}
         />
         <CardContent>
