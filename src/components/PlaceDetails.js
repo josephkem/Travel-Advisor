@@ -11,7 +11,10 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import PhoneIcon from "@material-ui/icons/Phone";
 import globe from "../images/globe.jpg";
 
-const PlaceDetails = ({ place }) => {
+const PlaceDetails = ({ place, placeRef, selected }) => {
+  if (selected) {
+    placeRef?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
   return (
     <div>
       <Card elevation={8}>

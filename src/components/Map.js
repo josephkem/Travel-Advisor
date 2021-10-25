@@ -3,6 +3,7 @@ import { makeStyles, Box, Typography, Paper } from "@material-ui/core";
 import GoogleMapReact from "google-map-react";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import globe from "../images/globe.jpg";
+import { Rating } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
   mapContainer: {
@@ -13,11 +14,17 @@ const useStyles = makeStyles((theme) => ({
     width: 100,
     display: "flex",
     justifyContent: "center",
-    padding: 10,
+    padding: 7,
+    flexDirection: "column",
+  },
+  cardImage: {
+    height: 80,
+    width: 80,
+    cursor: "pointer",
   },
 }));
 
-const Map = ({ places, coords, setBounds, setCoords }) => {
+const Map = ({ places, coords, setBounds, setCoords, setChildClicked }) => {
   const classes = useStyles();
   return (
     <Box className={classes.mapContainer}>
@@ -31,6 +38,7 @@ const Map = ({ places, coords, setBounds, setCoords }) => {
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
           setCoords({ lat: e.center.lat, lng: e.center.lng });
         }}
+        onChildClick={(child) => setChildClicked(child)}
       >
         {places.length > 0 &&
           places.map((place, index) => (
@@ -40,7 +48,13 @@ const Map = ({ places, coords, setBounds, setCoords }) => {
                 <Typography className={classes.typography}>
                   {place.name}
                 </Typography>
-                <img src={place.photo ? place.photo.images.large.url : globe} />
+
+                <Rating
+                  readOnly
+                  name="read-only"
+                  size="small"
+                  value={Number(place.rating)}
+                />
               </Paper>
             </div>
           ))}

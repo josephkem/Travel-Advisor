@@ -51,6 +51,7 @@ function App() {
             coords={coords}
             setBounds={(bounds) => setBounds(bounds)}
             setCoords={(coords) => setCoords(coords)}
+            setChildClicked={(child) => setChildClicked(child)}
           />
         </Grid>
       </Grid>

@@ -7,7 +7,7 @@ import {
   Select,
   Grid,
 } from "@material-ui/core";
-import React from "react";
+import React, { createRef, useState, useEffect } from "react";
 import PlaceDetails from "./PlaceDetails";
 
 const useStyles = makeStyles((theme) => ({
@@ -33,8 +33,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const List = ({ type, setType, isLoading, childClicked, places }) => {
-  console.log(places);
+  const [elRefs, setElRefs] = useState([]);
   const classes = useStyles();
+
+  useEffect(() => {
+    setElRefs((refs) => {
+      return Array(places.length)
+        .fill()
+        .map((_, index) => createRef());
+    });
+  }, [places]);
+
   return (
     <div className={classes.container}>
       {isLoading ? (
@@ -59,8 +68,13 @@ const List = ({ type, setType, isLoading, childClicked, places }) => {
             {places &&
               places.map((place, index) => {
                 return (
-                  <Grid item xs={12}>
-                    <PlaceDetails place={place} key={index} />
+                  <Grid item xs={12} ref={elRefs[index]}>
+                    <PlaceDetails
+                      selected={Number(childClicked) === index}
+                      place={place}
+                      key={index}
+                      placeRef={elRefs[index]}
+                    />
                   </Grid>
                 );
               })}
